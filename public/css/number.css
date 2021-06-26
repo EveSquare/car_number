@@ -1,0 +1,262 @@
+
+.plate {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 50px;
+}
+
+
+/* number plate */
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance:textfield;
+}
+
+input {
+  border: 2px solid #e0e0e0;  /* 枠線 */
+  border-radius: 12px;   /* 角丸 */
+  background-color: snow;  /* 背景色 */
+}
+
+input:focus {
+  border: 2px solid #ff9900; 
+  z-index: 10;
+  outline: 0;
+}
+
+#numberplate{
+  background-color: #f8f9fa;
+  border-radius: 24px;
+  width: 550px;
+  height: 300px;
+}
+
+.number-top{
+  margin-left: 110px;
+  padding-top: 30px;
+}
+
+.number-top #home-base{
+  font-size: 4em;
+  width: 190px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.number-top #home-base::placeholder{
+  text-align: center;
+}
+
+.number-top #class-number{
+  font-size: 4em;
+  width: 110px;
+  height: 60px;
+}
+
+.number-buttom{
+  margin-left: 20px;
+  margin-top: 35px;
+}
+
+.center-number{
+  font-size: 7em;
+  width: 90px;
+  height: 150px;
+}
+
+.left-kana{
+  padding-top: 50px;
+  height: 60px;
+}
+
+.number-buttom input::placeholder{
+  position:absolute; top:-10px; left:-10px
+}
+
+.number-buttom input::-ms-value{
+  position:absolute; top: 10px; left: 10px
+}
+
+.number-buttom .left-kana{
+  font-size: 3em;
+  width: 45px;
+  margin-right: 7px;
+}
+
+.number-buttom .left-kana::placeholder{
+  position:absolute; top: -5px; left: -0px
+}
+
+.number-hyphen{
+  background-color: black;
+  width: 30px;
+  height: 10px;
+  display: inline-block;
+  margin-bottom: 27px;
+}
+
+/* number palte end */
+
+
+/* radio button */
+
+li {
+  list-style: none;
+}
+
+.plate-color {
+  margin-top: 45px;
+  margin-left: -20px;
+}
+
+input[type=checkbox],input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  vertical-align: -0.8rem;
+  transition:all .15s ease-out 0s;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin: .4rem;
+  outline: none;
+  border-radius: 10%;
+}
+
+input[type=checkbox]:before,input[type=checkbox]:after {
+  position: absolute;
+  content: "";
+  background: #fff;
+  transition: all .2s ease-in-out;
+}
+
+input[type=checkbox]:before {
+  left: 2px;
+  top: 6px;
+  width: 0;
+  height: 2px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+
+input[type=checkbox]:after {
+  right: 9px;
+  bottom: 3px;
+  width: 2px;
+  height: 0;
+  transform: rotate(40deg);
+  -webkit-transform: rotate(40deg);
+  -moz-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  -o-transform: rotate(40deg);
+  transition-delay: .2s;
+}
+
+input[type=checkbox]:checked:before {
+  left: 1px;
+  top: 10px;
+  width: 6px;
+  height: 2px;
+}
+
+input[type=checkbox]:checked:after {
+  right: 5px;
+  bottom: 1px;
+  width: 2px;
+  height: 14px;
+}
+
+input[type=checkbox]:indeterminate:before,input[type=checkbox]:indeterminate:after {
+  width: 7px;
+  height: 2px;
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -moz-transform: rotate(0);
+  -ms-transform: rotate(0);
+  -o-transform: rotate(0);
+}
+
+input[type=checkbox]:indeterminate:before {
+  left: 1px;
+  top: 7px;
+}
+
+input[type=checkbox]:indeterminate:after {
+  right: 1px;
+  bottom: 7px;
+}
+
+input[type=radio] {
+  border-radius: 50%;
+}
+
+input[type=radio]:checked:before {
+  transform: scale(1);
+}
+
+input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 3px;
+  transform: scale(0);
+  transition: all ease-out 250ms;
+}
+
+input[type=checkbox].white,input[type=radio].white {
+  border: 2px solid #d3d3d3;
+}
+
+input[type=checkbox].white:checked,input[type=checkbox].white:indeterminate,input[type=radio].white:checked:before {
+  background: #d3d3d3;
+}
+
+input[type=checkbox].green,input[type=radio].green {
+  border: 2px solid #16631a;
+}
+
+input[type=checkbox].green:checked,input[type=checkbox].green:indeterminate,input[type=radio].green:checked:before {
+  background: #16631a;
+}
+
+input[type=checkbox].yellow,input[type=radio].yellow {
+  border: 2px solid #e2ec4e;
+}
+
+input[type=checkbox].yellow:checked,input[type=checkbox].yellow:indeterminate,input[type=radio].yellow:checked:before {
+  background: #e2ec4e;
+}
+
+input[type=checkbox].black,input[type=radio].black {
+  border: 2px solid #141414;
+}
+
+input[type=checkbox].black:checked,input[type=checkbox].black:indeterminate,input[type=radio].black:checked:before {
+  background: #141414;
+}
+
+input[type=checkbox].blue,input[type=radio].blue {
+  border: 2px solid #2196f3;
+}
+
+input[type=checkbox].blue:checked,input[type=checkbox].blue:indeterminate,input[type=radio].blue:checked:before {
+  background: #2196f3;
+}
+
+/* radio button end */
