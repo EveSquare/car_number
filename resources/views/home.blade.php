@@ -12,7 +12,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Car_number</a>
+        <a class="navbar-brand" href="#">Number plate Database</a>
       </div>
     </nav>
   </header>
@@ -99,6 +99,8 @@
   <script>
 
     let plate = document.getElementById('numberplate');
+    const number_plate = document.getElementById('numberplate');
+    let inputes = number_plate.querySelectorAll('input');
 
     const color_list = {
       "white"  : "#f8f9fa",
@@ -107,17 +109,29 @@
       "black"  : "#141414",
       "blue"   : "#2196f3",
     }
+
+    const color_class = [
+      "plate-white" ,
+      "plate-green" ,
+      "plate-yellow",
+      "plate-black" ,
+      "plate-blue"  ,
+    ]
     
     var rad = document.numberPlateForm.colors;
     var prev = null;
     for (var i = 0; i < rad.length; i++) {
-        rad[i].addEventListener('change', function() {
-            (prev) ? prev.value: null;
-            if (this !== prev) {
-                prev = this;
-            }
-            plate.style.backgroundColor=color_list[this.id];
-        });
+      rad[i].addEventListener('change', function() {
+          (prev) ? prev.value: null;
+          if (this !== prev) {
+              prev = this;
+          }
+          plate.style.backgroundColor=color_list[this.id];
+          for(let i = 0; i < inputes.length; i++) {
+            inputes[i].classList.remove(...color_class);
+            inputes[i].classList.add(`plate-${this.id}`);
+          }
+      });
     }
 
   </script>

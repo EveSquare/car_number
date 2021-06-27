@@ -1,4 +1,18 @@
 
+:root {
+  --plate-white: #d3d3d3;
+  --plate-white-font: #16631A;
+  --plate-green: #16631A;
+  --plate-green-font: #d3d3d3;
+  --plate-yellow: #e2ec4e;
+  --plate-yellow-font: #141414;
+  --plate-black: #141414;
+  --plate-black-font: #e2ec4e;
+  --plate-blue: #2196f3;
+  --plate-blue-font: #141414;
+}
+
+
 .plate {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -19,6 +33,11 @@ input {
   border: 2px solid #e0e0e0;  /* 枠線 */
   border-radius: 12px;   /* 角丸 */
   background-color: snow;  /* 背景色 */
+  color: var(--plate-white-font);
+}
+
+input::placeholder {
+  color: var(--plate-white-font);
 }
 
 input:focus {
@@ -68,7 +87,6 @@ input:focus {
 }
 
 .left-kana{
-  padding-top: 50px;
   height: 60px;
 }
 
@@ -98,7 +116,47 @@ input:focus {
   margin-bottom: 27px;
 }
 
-/* number palte end */
+.plate-white::-webkit-input-placeholder {
+  color: var(--plate-white-font);
+}
+
+.plate-white {
+  color: var(--plate-white-font);
+}
+
+.plate-green::-webkit-input-placeholder {
+  color: var(--plate-green-font);
+}
+
+.plate-green {
+  color: var(--plate-green-font);
+}
+
+.plate-yellow::-webkit-input-placeholder {
+  color: var(--plate-yellow-font);
+}
+
+.plate-yellow {
+  color: var(--plate-yellow-font);
+}
+
+.plate-black::-webkit-input-placeholder {
+  color: var(--plate-black-font);
+}
+
+.plate-black {
+  color: var(--plate-black-font);
+}
+
+.plate-blue::-webkit-input-placeholder {
+  color: var(--plate-blue-font);
+}
+
+.plate-blue {
+  color: var(--plate-blue-font);
+}
+
+/* number plate end */
 
 
 /* radio button */
