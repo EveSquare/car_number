@@ -91,6 +91,11 @@
           <li><input id="blue" class="blue" type="radio" name="colors"></li>
         </ul>
       </div>
+      <div></div>
+      <div class="btn-wrap">
+        <a id="btn1" href="https://google.co.jp/">画像で検索</a>
+        <button id="btn2" type="submit">検索</button>
+      </div>
     </form>
   </main>
 
@@ -99,15 +104,17 @@
   <script>
 
     let plate = document.getElementById('numberplate');
+    let btn1 = document.getElementById('btn1');
+    let btn2 = document.getElementById('btn2');
     const number_plate = document.getElementById('numberplate');
     let inputes = number_plate.querySelectorAll('input');
 
     const color_list = {
       "white"  : "#f8f9fa",
-      "green"  : "#16631a",
-      "yellow" : "#e2ec4e",
-      "black"  : "#141414",
-      "blue"   : "#2196f3",
+      "green"  : "#198754",
+      "yellow" : "#ffc107",
+      "black"  : "#343a40",
+      "blue"   : "#0dcaf0",
     }
 
     const color_class = [
@@ -126,10 +133,23 @@
           if (this !== prev) {
               prev = this;
           }
-          plate.style.backgroundColor=color_list[this.id];
+          //input
+          plate.style.backgroundColor = color_list[this.id];
           for(let i = 0; i < inputes.length; i++) {
             inputes[i].classList.remove(...color_class);
             inputes[i].classList.add(`plate-${this.id}`);
+          }
+          //button
+          if (this.id == 'white') {
+            btn1.style.borderColor = color_list['green'];
+            btn1.style.color = color_list['green'];
+            btn2.style.borderColor = color_list['green'];
+            btn2.style.backgroundColor = color_list['green'];
+          }else{
+            btn1.style.borderColor = color_list[this.id];
+            btn1.style.color = color_list[this.id];
+            btn2.style.borderColor = color_list[this.id];
+            btn2.style.backgroundColor = color_list[this.id];
           }
       });
     }

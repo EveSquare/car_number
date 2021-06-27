@@ -1,15 +1,15 @@
 
 :root {
-  --plate-white: #d3d3d3;
-  --plate-white-font: #16631A;
-  --plate-green: #16631A;
-  --plate-green-font: #d3d3d3;
-  --plate-yellow: #e2ec4e;
-  --plate-yellow-font: #141414;
-  --plate-black: #141414;
+  --plate-white: var(--bs-light);
+  --plate-white-font: var(--bs-green);
+  --plate-green: var(--bs-green);
+  --plate-green-font: var(--bs-secondary);
+  --plate-yellow: var(--bs-yellow);
+  --plate-yellow-font: var(--bs-gray-dark);
+  --plate-black: var(--bs-gray-dark);
   --plate-black-font: #e2ec4e;
-  --plate-blue: #2196f3;
-  --plate-blue-font: #141414;
+  --plate-blue: var(--bs-cyan);
+  --plate-blue-font: var(--bs-gray-dark);
 }
 
 
@@ -318,3 +318,30 @@ input[type=checkbox].blue:checked,input[type=checkbox].blue:indeterminate,input[
 }
 
 /* radio button end */
+
+/* button_wrap */
+
+.btn-wrap {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn-wrap a {
+  padding: 12px 35px;
+  margin-right: 15px;
+  background-color: var(--plate-white);
+  border: 2px solid var(--plate-white-font);
+  text-decoration: none;
+  color: var(--plate-white-font);
+}
+
+.btn-wrap button {
+  margin-left: 15px;
+  height: 49px;
+  width: 150px;
+  background-color: var(--plate-white-font);
+  color: var(--plate-white);
+  border: 2px solid var(--plate-white-font);
+}
+
+/* button_wrap_end */
