@@ -42,7 +42,7 @@
   <div class="comments">
     <div class="comment-card">
       <div class="comment-body">
-        <h5 class="comment-title">駐車場で〇〇をして頂きました。</h5>
+        <h5 class="comment-title">駐車場で荷物を運んで頂きました。</h5>
         <hr>
         <p>
           aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
