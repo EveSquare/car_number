@@ -3,7 +3,8 @@
 @section('content')
 
 <main class='container'>
-  <form action="" method="post" class="plate" name="numberPlateForm">
+  <form action="{{ url('/') }}" method="post" class="plate" name="numberPlateForm">
+    @csrf
     <div></div>
     <div id="numberplate">
       <div class="number-sealed"></div>
@@ -16,7 +17,7 @@
           maxlength="3"
         >
         <input 
-          type="text"
+          type="number"
           name="category_number"
           id="class-number"
           placeholder="500"
@@ -69,11 +70,11 @@
     </div>
     <div>
       <ul class="plate-color">
-        <li><input id="white" class="white" type="radio" name="colors" checked></li>
-        <li><input id="green" class="green" type="radio" name="colors"></li>
-        <li><input id="yellow" class="yellow" type="radio" name="colors"></li>
-        <li><input id="black" class="black" type="radio" name="colors"></li>
-        <li><input id="blue" class="blue" type="radio" name="colors"></li>
+        <li><input id="white" class="white" type="radio" name="colors" value="white"  checked></li>
+        <li><input id="green" class="green" type="radio" name="colors" value="green" ></li>
+        <li><input id="yellow" class="yellow" type="radio" name="colors" value="yellow"></li>
+        <li><input id="black" class="black" type="radio" name="colors" value="black" ></li>
+        <li><input id="blue" class="blue" type="radio" name="colors" value="blue" ></li>
       </ul>
     </div>
     <div></div>

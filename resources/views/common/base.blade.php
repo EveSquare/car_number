@@ -14,6 +14,18 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Number plate Database @yield('brand_name')</a>
+        @if (Route::has('login'))
+          <div class="hidden fixed top-0 right-0 px-6 sm:block">
+            @auth
+              <a href="{{ url('/dashboard') }}" class="btn btn-primary">ダッシュボード</a>
+            @else
+              <a href="{{ route('login') }}" class="btn btn-secondary">ログイン</a>
+              @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="btn btn-primary">アカウント作成</a>
+              @endif
+            @endif
+          </div>
+        @endif
       </div>
     </nav>
   </header>

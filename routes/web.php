@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,14 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::post('/', function (Request $req) {
+    echo var_dump($req->all());
+    return view('home');
+});
+
 Route::get('detail/', function() {
     return view('detail');
 });
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
