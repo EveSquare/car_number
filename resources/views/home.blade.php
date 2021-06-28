@@ -14,16 +14,20 @@
           name="regional_name"
           id="home-base"
           placeholder="品川"
+          value="品川"
           maxlength="3"
+          require
         >
         <input 
           type="number"
           name="category_number"
           id="class-number"
           placeholder="500"
+          value="500"
           min="000"
           max="999"
           maxlength="3"
+          require
         >
       </div>
       <div class="number-buttom">
@@ -32,7 +36,9 @@
           name="hiragana"
           class="left-kana"
           placeholder="あ"
+          value="あ"
           maxlength="1"
+          require
         >
         
         <input 
@@ -40,6 +46,7 @@
           name="specified_number_1"
           class="center-number"
           placeholder="・"
+          value=1
           min="0"
           max="9"
           maxlength="1"
@@ -49,6 +56,7 @@
           name="specified_number_2"
           class="center-number"
           placeholder="・"
+          value=1
           maxlength="1"
         >
         <div class="number-hyphen"></div>
@@ -57,6 +65,7 @@
           name="specified_number_3"
           class="center-number"
           placeholder="・"
+          value=1
           maxlength="1"
         >
         <input 
@@ -64,6 +73,7 @@
           name="specified_number_4"
           class="center-number"
           placeholder="・"
+          value=1
           maxlength="1"
         >
       </div>

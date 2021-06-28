@@ -17,7 +17,7 @@
         @if (Route::has('login'))
           <div class="hidden fixed top-0 right-0 px-6 sm:block">
             @auth
-              <a href="{{ url('/dashboard') }}" class="btn btn-primary">ダッシュボード</a>
+              <a href="{{ url('/user/profile') }}" class="btn btn-primary">マイページ</a>
             @else
               <a href="{{ route('login') }}" class="btn btn-secondary">ログイン</a>
               @if (Route::has('register'))
