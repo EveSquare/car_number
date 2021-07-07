@@ -47,12 +47,24 @@ Route::post('/', function (Request $req) {
         echo '見つかりませんでした'. var_dump($number_plate->id);
     }
 
-    return view('home');
+    return redirect()->route('detail', [
+        'rn' => $number_plate->regional_name,
+        'cn' => $number_plate->category_number,
+        'hi' => $number_plate->hiragana,
+        's1' => $number_plate->specified_number_1,
+        's2' => $number_plate->specified_number_2,
+        's3' => $number_plate->specified_number_3,
+        's4' => $number_plate->specified_number_4,
+        'cl' => $number_plate->color,
+    ]);
 });
 
-Route::get('detail/', function() {
+Route::get('detail/', function(Request $req) {
+
+    echo var_dump($req->query('rn'));
+
     return view('detail');
-});
+})->name('detail');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
