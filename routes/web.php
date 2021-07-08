@@ -61,10 +61,37 @@ Route::post('/', function (Request $req) {
 
 Route::get('detail/', function(Request $req) {
 
-    echo var_dump($req->query('rn'));
+    $record = [
+        'regional_name' => $req->input('rn'),
+        'category_number' => intval($req->input('cn')),
+        'hiragana' => $req->input('hi'),
+        'specified_number_1' => intval($req->input('s1')),
+        'specified_number_2' => intval($req->input('s2')),
+        'specified_number_3' => intval($req->input('s3')),
+        'specified_number_4' => intval($req->input('s4')),
+        'color'=> $req->input('cl'),
+    ];
+
+    try{
+        $number_plate = Number_plate::where($record)->firstOrFail();
+        echo '見つかりました'. var_dump($number_plate->id);
+    }catch(ModelNotFoundException $e){
+        $number_plate = Number_plate::create($record);
+        echo '見つかりませんでした'. var_dump($number_plate->id);
+    }
+
+
 
     return view('detail');
 })->name('detail');
+
+Route::get('newcomment/', function() {
+    return view('newcomment');
+});
+Route::post('newcomment/', function() {
+    return view('newcomment');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

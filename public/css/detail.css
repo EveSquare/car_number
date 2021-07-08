@@ -160,3 +160,24 @@
 }
 
 /* commentend */
+
+/* comment button */
+
+.newcomment {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.newcomment a {
+  padding: 15px 50px;
+  background-color: var(--bs-primary);
+  color: var(--bs-white);
+  text-decoration: none;
+}
+
+.newcomment a:hover {
+  background-color: #0b5ed7;
+  color: var(--bs-white);
+}
+
+/* comment button end */

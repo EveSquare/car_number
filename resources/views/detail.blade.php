@@ -39,6 +39,9 @@
       </div>
     </div>
   </div>
+  <div class="newcomment">
+    <a href="{{ url('newcomment/') }}">コメントを残す</a>
+  </div>
   <div class="comments">
     <div class="comment-card">
       <div class="comment-body">

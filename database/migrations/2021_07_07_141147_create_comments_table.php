@@ -19,8 +19,8 @@ class CreateCommentsTable extends Migration
                 ->constrained('users')
                 ->onDelete('cascade');
             $table->string('evaluation',20);
-            $table->string('title', 200)->default('');
-            $table->text('content')->default('');
+            $table->string('title', 200);
+            $table->text('content');
             $table->integer('reaction')->default(0);
             $table->boolean('is_Delete')->default(false);
             $table->timestamps();
