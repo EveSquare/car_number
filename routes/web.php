@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Number_plate;
 use App\Models\Comment;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use thiagoalessio\TesseractOCR\TesseractOCR;
 
 /*
 |--------------------------------------------------------------------------
@@ -143,6 +144,27 @@ Route::post('newcomment/{id}', function(Request $req, $id) {
     DB::table('comments')->insert($comment);
 
     return view('comment_add_success');
+});
+
+Route::get('upload/', function() {
+    return view('upload-page');
+});
+
+Route::post('upload/', function(Request $req) {
+
+    $req->validate([
+        'image' => 'required|file|image|mimes:png,jpeg'
+    ]);
+
+    $upload_image = $req->file('image');
+
+    if($upload_image) {
+        $path = $upload_image->store('uploads',"public");
+    }
+
+    echo (new TesseractOCR($path))->run();
+
+    return view('home');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

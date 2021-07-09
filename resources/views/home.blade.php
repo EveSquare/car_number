@@ -89,7 +89,7 @@
     </div>
     <div></div>
     <div class="btn-wrap">
-      <a id="btn1" href="https://google.co.jp/">画像で検索</a>
+      <a id="btn1" href="{{ url('upload/') }}">画像で検索</a>
       <button id="btn2" type="submit">検索</button>
     </div>
   </form>

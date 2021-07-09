@@ -16,6 +16,13 @@
   DB_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock
 ```
 
+php.iniに以下を追記
+```
+extension=php_fileinfo.dll
+```
+
+composer require thiagoalessio/tesseract_ocr
+
 # jetstream
 
 [jetstream](https://qiita.com/manbolila/items/498aae00f3574c72f031)
