@@ -151,12 +151,16 @@
 /* comment */
 
 .comments {
-  padding: 150px;
+  padding: 25px 150px;
 }
 
 .comment-card {
   padding: 20px;
   border: 1px solid #d8d8d8;
+}
+
+.comment-content {
+  overflow-wrap: break-word;
 }
 
 /* commentend */
@@ -165,6 +169,7 @@
 
 .newcomment {
   margin-top: 40px;
+  margin-bottom: 50px;
   text-align: center;
 }
 

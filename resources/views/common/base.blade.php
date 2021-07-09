@@ -13,7 +13,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url('/') }}">Number plate Database @yield('brand_name')</a>
+        <a class="navbar-brand" href="{{ url('/') }}">ナンバープレート データベース @yield('brand_name')</a>
         @if (Route::has('login'))
           <div class="hidden fixed top-0 right-0 px-6 sm:block">
             @auth

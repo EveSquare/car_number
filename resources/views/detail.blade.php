@@ -19,6 +19,11 @@
     border-bottom-right-radius: 0.5em;
   }
 
+  .comment-empty {
+    text-align: center;
+    margin-top: 100px;
+  }
+
 </style>
 @endsection
 
@@ -42,21 +47,23 @@
   <div class="newcomment">
     <a href="{{ url('newcomment/'.$id) }}">コメントを残す</a>
   </div>
-  <div class="comments">
-    <div class="comment-card">
-      <div class="comment-body">
-        <h5 class="comment-title">駐車場で荷物を運んで頂きました。</h5>
-        <hr>
-        <p>
-          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-        </p>
+  @forelse ($comments as $comment)
+    <div class="comments">
+      <div class="comment-card">
+        <div class="comment-body">
+          <p>{{ $comment->evaluation }}</p>
+          <h5 class="comment-title">{{ $comment->title }}</h5>
+          <hr>
+          <p class="comment-content">
+            {{ $comment->content }}
+          </p>
+        </div>
+        <button class="btn-show">続きを見る+</button>
       </div>
-      <button class="btn-show">続きを見る+</button>
     </div>
-  </div>
+    @empty
+    <h4 class="comment-empty">コメントはありません</h4>
+  @endforelse
 </main>
 @endsection
 

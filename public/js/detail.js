@@ -1,6 +1,18 @@
 
 Vue.use(VTooltip);
 
+Vue.component('comment', {
+  delimiters: ['[[', ']]'],
+  props: {
+  },
+  data: function(){
+    return {}
+  },
+  methods: {},
+  computed: {},
+  template: ``
+})
+
 new Vue({
   el: '#app',
   delimiters: ['[[', ']]'],
