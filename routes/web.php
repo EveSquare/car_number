@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Number_plate;
 use App\Models\Comment;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Storage;
 use thiagoalessio\TesseractOCR\TesseractOCR;
 
 /*
@@ -157,12 +158,16 @@ Route::post('upload/', function(Request $req) {
     ]);
 
     $upload_image = $req->file('image');
+    $file_name = $upload_image->getFilename();
 
     if($upload_image) {
         $path = $upload_image->store('uploads',"public");
     }
 
-    echo (new TesseractOCR($path))->run();
+    // preg_match( '/[^一-龠]/u', '文字列' 漢字判定
+    echo (new TesseractOCR(storage_path('app/public').'/'.$path))
+        ->lang('jpn')
+        ->run();
 
     return view('home');
 });

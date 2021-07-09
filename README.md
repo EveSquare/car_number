@@ -22,6 +22,7 @@ extension=php_fileinfo.dll
 ```
 
 composer require thiagoalessio/tesseract_ocr
+php artisan storage:link
 
 # jetstream
 

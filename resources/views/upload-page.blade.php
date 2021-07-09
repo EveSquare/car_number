@@ -26,7 +26,7 @@
   <form action="{{ url('upload/') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="file-upload-form">
-      <label for="file">画像をアップロード</label>
+      <label for="file">画像をアップロード(2Mbまで)</label>
       <input type="file" class="form-control-file" id="file" name="image" accept="image/png, image/jpeg">
     </div>
     <div class="btn-center">
