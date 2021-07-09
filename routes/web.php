@@ -75,16 +75,15 @@ Route::get('detail/', function(Request $req) {
 
     try{
         $number_plate = Number_plate::where($record)->firstOrFail();
-        echo '見つかりました'. var_dump($number_plate->id);
     }catch(ModelNotFoundException $e){
         $number_plate = Number_plate::create($record);
-        echo '見つかりませんでした'. var_dump($number_plate->id);
     }
 
-
+    $comments = Comment::where('number_plate_id', $number_plate->id)->latest()->get();
 
     return view('detail', [
         'id' => $number_plate->id,
+        'comments' => $comments,
     ]);
 })->name('detail');
 
@@ -94,14 +93,15 @@ Route::get('newcomment/{id}', function() {
 Route::post('newcomment/{id}', function(Request $req, $id) {
 
     // $number_instance = DB::table('number_plates')->find($id);
-
     $comment = [
-        'user_id' => $id,
+        'user_id' => $req->user()->id,
+        'number_plate_id' => $id,
         'evaluation' => $req->input('evaluation'),
         'title' => $req->input('title'),
-        'content' => $req->input('content')
+        'content' => $req->input('content'),
+        'created_at' => date('Y-m-d H:i:s'),
     ];
-
+    
     DB::table('comments')->insert($comment);
 
     return view('comment_add_success');
