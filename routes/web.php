@@ -21,7 +21,6 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 Route::get('/', function (Request $req) {
     $user = $req->user();
-    echo var_dump($user);
     return view('home');
 });
 
