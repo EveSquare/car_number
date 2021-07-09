@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Number_plate;
-use Faker\Core\Number;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /*
@@ -82,14 +83,28 @@ Route::get('detail/', function(Request $req) {
 
 
 
-    return view('detail');
+    return view('detail', [
+        'id' => $number_plate->id,
+    ]);
 })->name('detail');
 
-Route::get('newcomment/', function() {
+Route::get('newcomment/{id}', function() {
     return view('newcomment');
 });
-Route::post('newcomment/', function() {
-    return view('newcomment');
+Route::post('newcomment/{id}', function(Request $req, $id) {
+
+    // $number_instance = DB::table('number_plates')->find($id);
+
+    $comment = [
+        'user_id' => $id,
+        'evaluation' => $req->input('evaluation'),
+        'title' => $req->input('title'),
+        'content' => $req->input('content')
+    ];
+
+    DB::table('comments')->insert($comment);
+
+    return view('comment_add_success');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
