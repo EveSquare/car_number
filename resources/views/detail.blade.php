@@ -24,6 +24,22 @@
     margin-top: 100px;
   }
 
+  .ps {
+    width: {{ $per_positive }}%;
+  }
+
+  .nr {
+    width: {{ $per_normal }}%;
+  }
+
+  .ng {
+    width: {{ $per_negative }}%;
+  }
+
+  .margin {
+    margin-top: 250px;
+  }
+
 </style>
 @endsection
 
@@ -33,16 +49,20 @@
 @section('content')
 <main id="app">
   <div class="container">
-    <div class="evaluation">
-      <div class="balloon">
-        <p class="balloon-code">+</p>
+    @if(empty($comments))
+      <div class="evaluation">
+        <div class="balloon">
+          <p class="balloon-code">+</p>
+        </div>
+        <div class="progress">
+          <div class="progress-bar progress-bar-left ps"data-toggle="tooltip" title="Tooltip message" v-tooltip.top="positive" role="progressbar" aria-valuenow="{{ $per_positive }}" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar bg-success nr" v-tooltip.top="normal" role="progressbar" aria-valuenow="{{ $per_normal }}" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar bg-info progress-bar-right ng" v-tooltip.top="negative" role="progressbar" aria-valuenow="{{ $per_negative }}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
       </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-left"data-toggle="tooltip" title="Tooltip message" v-tooltip.top="positive" role="progressbar" style="width: 70%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-        <div class="progress-bar bg-success" v-tooltip.top="normal" role="progressbar" style="width: 10%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-        <div class="progress-bar bg-info progress-bar-right" v-tooltip.top="negative" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-    </div>
+    @else
+      <div class="margin"></div>
+    @endif
   </div>
   <div class="newcomment">
     <a href="{{ url('newcomment/'.$id) }}">コメントを残す</a>
@@ -52,6 +72,7 @@
       evaluation="{{ $comment->evaluation }}"
       title="{{ $comment->title }}"
       content="{{ $comment->content }}"
+      created-date="{{ $comment->created_at }}"
     ></comment>
     @empty
     <h4 class="comment-empty">コメントはありません</h4>

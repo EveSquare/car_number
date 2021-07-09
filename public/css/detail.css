@@ -163,6 +163,30 @@
   overflow-wrap: break-word;
 }
 
+.comment-evaluation {
+  border-radius: 50%;
+  background-color: var(--bs-grey);
+  color: var(--bs-white);
+  width: 24px;
+  text-align: center;
+}
+
+.positive {
+  background-color: var(--bs-primary);
+}
+
+.normal {
+  background-color: var(--bs-gray);
+}
+
+.negative {
+  background-color: var(--bs-red);
+}
+
+.write-date {
+  float: right;
+}
+
 /* commentend */
 
 /* comment button */

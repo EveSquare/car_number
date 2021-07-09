@@ -80,9 +80,48 @@ Route::get('detail/', function(Request $req) {
 
     $comments = Comment::where('number_plate_id', $number_plate->id)->latest()->get();
 
+    $comment_count = $comments->count();
+    $positive = 0;
+    $normal = 0;
+    $negative = 0;
+
+    foreach ($comments as $comment){
+        switch ($comment->evaluation){
+            case '+':
+                $positive += 1;
+                break;
+            case '-':
+                $negative += 1;
+                break;
+            default:
+                $normal += 1;
+        }
+    }
+
+    if($positive){
+        $per_positive = round(100*($positive/$comment_count), 0);
+    }else{
+        $per_positive = 0;
+    }
+
+    if($negative){
+        $per_negative = round(100*($negative/$comment_count), 0);
+    }else{
+        $per_negative = 0;
+    }
+
+    if($normal){
+        $per_normal = round(100*($normal/$comment_count), 0);
+    }else{
+        $per_normal = 0;
+    }
+
     return view('detail', [
         'id' => $number_plate->id,
         'comments' => $comments,
+        'per_positive' => $per_positive,
+        'per_negative' => $per_negative,
+        'per_normal' => $per_normal,
     ]);
 })->name('detail');
 
