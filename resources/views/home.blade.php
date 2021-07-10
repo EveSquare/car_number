@@ -14,7 +14,7 @@
           name="regional_name"
           id="home-base"
           placeholder="品川"
-          value="品川"
+          value="{{ $rn }}"
           maxlength="3"
           require
         >
@@ -23,7 +23,7 @@
           name="category_number"
           id="class-number"
           placeholder="500"
-          value="500"
+          value="{{ $cn }}"
           min="000"
           max="999"
           maxlength="3"
@@ -36,7 +36,7 @@
           name="hiragana"
           class="left-kana"
           placeholder="あ"
-          value="あ"
+          value="{{ $hi }}"
           maxlength="1"
           require
         >
@@ -46,7 +46,7 @@
           name="specified_number_1"
           class="center-number"
           placeholder="・"
-          value=1
+          value="{{ $s1 }}"
           min="0"
           max="9"
           maxlength="1"
@@ -56,7 +56,7 @@
           name="specified_number_2"
           class="center-number"
           placeholder="・"
-          value=1
+          value="{{ $s2 }}"
           maxlength="1"
         >
         <div class="number-hyphen"></div>
@@ -65,7 +65,7 @@
           name="specified_number_3"
           class="center-number"
           placeholder="・"
-          value=1
+          value="{{ $s3 }}"
           maxlength="1"
         >
         <input 
@@ -73,7 +73,7 @@
           name="specified_number_4"
           class="center-number"
           placeholder="・"
-          value=1
+          value="{{ $s4 }}"
           maxlength="1"
         >
       </div>

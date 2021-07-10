@@ -22,9 +22,17 @@ use thiagoalessio\TesseractOCR\TesseractOCR;
 */
 
 Route::get('/', function (Request $req) {
-    $user = $req->user();
-    return view('home');
-});
+    
+    return view('home', [
+        'rn' => $req->input('rn'),
+        'cn' => $req->input('cn'),
+        'hi' => $req->input('hi'),
+        's1' => intval($req->input('s1')),
+        's2' => intval($req->input('s2')),
+        's3' => intval($req->input('s3')),
+        's4' => intval($req->input('s4')),
+    ]);
+})->name('home');
 
 Route::post('/', function (Request $req) {
     //user_instanse
@@ -33,7 +41,7 @@ Route::post('/', function (Request $req) {
     //入力チェック
     $record = [
         'regional_name' => $req->input('regional_name'),
-        'category_number' => intval($req->input('category_number')),
+        'category_number' => $req->input('category_number'),
         'hiragana' => $req->input('hiragana'),
         'specified_number_1' => intval($req->input('specified_number_1')),
         'specified_number_2' => intval($req->input('specified_number_2')),
@@ -132,7 +140,6 @@ Route::get('newcomment/{id}', function() {
 });
 Route::post('newcomment/{id}', function(Request $req, $id) {
 
-    // $number_instance = DB::table('number_plates')->find($id);
     $comment = [
         'user_id' => $req->user()->id,
         'number_plate_id' => $id,
@@ -158,18 +165,78 @@ Route::post('upload/', function(Request $req) {
     ]);
 
     $upload_image = $req->file('image');
-    $file_name = $upload_image->getFilename();
 
     if($upload_image) {
         $path = $upload_image->store('uploads',"public");
     }
 
-    // preg_match( '/[^一-龠]/u', '文字列' 漢字判定
-    echo (new TesseractOCR(storage_path('app/public').'/'.$path))
-        ->lang('jpn')
-        ->run();
+    $ocr = (new TesseractOCR(storage_path('app/public').'/'.$path))->lang('jpn')->run();
+    
+    $rn = null;
+    $cn = null;
+    $hi = null;
+    $s1 = null;
+    $s2 = null;
+    $s3 = null;
+    $s4 = null;
+    $query_array = [];
 
-    return view('home');
+    $ocr = preg_replace("/[^ぁ-んァ-ンーa-zA-Z0-9一-龠０-９\-\r]+/u", '', $ocr);
+    
+    str_replace(' ', '', $ocr);
+    preg_match('/[一-龠]{2,3}/u', $ocr, $rn);
+    if(!empty($rn)){
+        $query_array['rn'] = $rn[0];
+    }
+
+    if(preg_match('/[\d]{3}/u', $ocr, $cn)){
+        str_replace($cn, '', $ocr);
+    }
+    if(!empty($cn)){
+        $query_array['cn'] = $cn[0];
+    }
+
+    preg_match('/[あ-ん]/u', $ocr, $hi);
+    if(!empty($hi)){
+        $query_array['hi'] = $hi[0];
+    }
+
+    $count = 0;
+    foreach(str_split($ocr) as $val){
+        if(preg_match('/[0-9]/u', $val)){
+            switch ($count){
+                case 0:
+                    $s1 = $val;
+                    if(!empty($s1)){
+                        $query_array['s1'] = $s1[0];
+                    }
+                    break;
+                case 1:
+                    $s2 = $val;
+                    if(!empty($s2)){
+                        $query_array['s2'] = $s2[0];
+                    }
+                    break;
+                case 2:
+                    $s3 = $val;
+                    if(!empty($s3)){
+                        $query_array['s3'] = $s3[0];
+                    }
+                    break;
+                case 3:
+                    $s4 = $val;
+                    if(!empty($s4)){
+                        $query_array['s4'] = $s4[0];
+                    }
+                    break;
+                default:
+                    break;
+            }
+            $count += 1;
+        }
+    }
+
+    return redirect()->route('home', $query_array);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
